@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Ramakrishna Hospital</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="nav.html">Home</a>
+              </li>
+              <li class="nav-item">
+               <a class="nav-link active" href="singup.html">Signup</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="login.html">Login</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <form class="sm-col-12 m-auto mt-5 bg-body-secondary p-2">
+        <h2 class="text-center">Signup</h2>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <p id="validationEmail"></p>
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="pwd">
+          <p id="pwdStrong"></p>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="confirmpwd">
+        </div>
+        <button  class="btn btn-primary" id="btn">Sign In</button>
+    </form>
+    <footer class="footerBottom">
+        <p>Copyright &copy;2023;Hospital.In</p>
+        <p>Help Line:011-1234-1234, Bangalore-Karanataka</p>
+        </footer>
+
+        <script>
+        const name=document.getElementById("name");
+        const email=document.getElementById("email");
+        const  pwd=document.getElementById("pwd");
+        const confirmpwd=document.getElementById("confirmpwd");
+        const btn=document.getElementById("btn");
+        const pwdStrong=document.getElementById("pwdStrong");
+
+        const validationEmail =document.getElementById("validationEmail");
+          
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        function validEmail(e){
+            e.preventDefault();
+
+          if(!name.value||!email.value||!pwd.value||!confirmpwd){
+            return alert("Please enter all the given detailes")
+          }
+
+           if(!emailRegex.test(email.value)){
+            validationEmail.style.color="red";
+            validationEmail.innerHTML="Enter valid Email"
+           }else{
+            validationEmail.style.color="green";
+            validationEmail.innerHTML="Email is valid";
+           }
+           if(pwd.value.length>8){
+             return alert("password must be 8 character");
+           }else if(pwd.value.length<6) {
+            // return alert("password is so weak");
+            pwdStrong.style.color="red";
+            pwdStrong.innerHTML="password is so weak";
+           }else if(pwd.value.length>7) {
+            // return alert("which is storng password");
+
+            pwdStrong.style.color="green"
+            pwdStrong.innerHTML="your password will be strong and Secure"
+           }
+            if(pwd.value ===confirmpwd.value  ){
+             return alert("password is matched")
+            }
+           else if(pwd.value !==confirmpwd.value) {
+             return alert("password does not match")
+           }
+
+        }
+
+        btn.addEventListener("click",validEmail);
+        </script>
+
+</body>
+</html>
